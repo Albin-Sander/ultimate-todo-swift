@@ -19,13 +19,21 @@ class ListModal: ObservableObject {
 struct ListView: View {
     let tests = ["hej", "tja"]
     @EnvironmentObject private var todoList: ListModal
-
+    
+    func deleteItems(at offsets: IndexSet) {
+        todoList.todos.remove(atOffsets: offsets)
+    }
     var body: some View {
         List {
             ForEach($todoList.todos, id: \.self) { todo in
                 Text(todo.wrappedValue)
             }
+            .onDelete(perform: deleteItems)
         }
+        .toolbar {
+            EditButton()
+        }
+        
         
     }
 }

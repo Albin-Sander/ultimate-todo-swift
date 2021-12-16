@@ -23,7 +23,10 @@ struct ContentView: View {
                 TextfieldView()
                         .environmentObject(todoItems)
                         .environmentObject(hideInput)
+                        
                 }
+                    
+                    
                 
                 HStack {
                     Spacer()
