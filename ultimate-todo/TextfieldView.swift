@@ -7,9 +7,14 @@
 
 import SwiftUI
 
+class TextFieldModal: ObservableObject {
+    @Published var hideInput = true
+}
+
 struct TextfieldView: View {
     @State private var todoItem = ""
     @EnvironmentObject private var todoList: ListModal
+    @EnvironmentObject private var hideInput: TextFieldModal
     @FocusState private var isFocused: Bool
     var body: some View {
         HStack {
@@ -21,6 +26,7 @@ struct TextfieldView: View {
                 todoList.todos.append(todoItem)
                 todoItem = ""
                 isFocused = false
+                hideInput.hideInput = true
             }, label: {
                 Text("Add")
             })

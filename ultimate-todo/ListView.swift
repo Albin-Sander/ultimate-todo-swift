@@ -13,6 +13,7 @@ class ListModal: ObservableObject {
     @Published var todos: [String] = []
     
     
+    
 }
 
 struct ListView: View {

@@ -10,8 +10,8 @@ import SwiftUI
 
 
 struct ContentView: View {
-    @StateObject var buttonPressed = ButtonModel()
     @StateObject var todoItems = ListModal()
+    @StateObject var hideInput = TextFieldModal()
     
     var body: some View {
         NavigationView {
@@ -19,15 +19,16 @@ struct ContentView: View {
                 ListView()
                     .environmentObject(todoItems)
                 
-                if(buttonPressed.buttonPressed) {
+                if(!hideInput.hideInput) {
                 TextfieldView()
                         .environmentObject(todoItems)
+                        .environmentObject(hideInput)
                 }
                 
                 HStack {
                     Spacer()
                     ButtonView()
-                        .environmentObject(buttonPressed)
+                        .environmentObject(hideInput)
                         
                 }
                 

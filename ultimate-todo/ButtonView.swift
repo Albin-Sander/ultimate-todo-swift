@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-class ButtonModel: ObservableObject {
-    @Published var buttonPressed = false
-}
+
 
 struct ButtonView: View {
-    @EnvironmentObject private var buttonPressed: ButtonModel
+    @EnvironmentObject private var hideInput: TextFieldModal
     var body: some View {
         Button(action: {
-            buttonPressed.buttonPressed = true
+            
+            hideInput.hideInput = false
         }, label: {
             Text("+")
                 .padding()
