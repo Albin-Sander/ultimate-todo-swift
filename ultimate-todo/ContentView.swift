@@ -41,8 +41,12 @@ struct ContentView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Ultimate Todo")
             
+            
+            
         }
+       
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

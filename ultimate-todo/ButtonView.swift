@@ -10,21 +10,18 @@ import SwiftUI
 
 
 struct ButtonView: View {
-    @EnvironmentObject private var hideInput: TextFieldModal
-    @State private var buttonText = "plus"
+    @EnvironmentObject private var TextfieldClass: TextFieldModal
+    
+    
+    
+        
     var body: some View {
         Button(action: {
             
-            if(hideInput.hideInput) {
-                hideInput.hideInput = false
-                buttonText = "minus"
-            } else {
-                hideInput.hideInput = true
-                buttonText = "plus"
-            }
+            TextfieldClass.buttonPressed()
             
         }, label: {
-            Text("\(Image(systemName: buttonText))")
+            Text("\(Image(systemName: TextfieldClass.buttonText))")
             
                 .padding()
                 .font(.system(.title))
@@ -36,9 +33,12 @@ struct ButtonView: View {
 //            .cornerRadius(30)
             .clipShape(Capsule())
             .padding()
+          
     }
         
+        
 }
+    
     
 
 struct ButtonView_Previews: PreviewProvider {

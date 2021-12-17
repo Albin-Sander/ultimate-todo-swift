@@ -9,6 +9,21 @@ import SwiftUI
 
 class TextFieldModal: ObservableObject {
     @Published var hideInput = true
+    @Published var buttonText = "plus"
+    
+    func buttonPressed() {
+        if(hideInput) {
+            self.hideInput = false
+            buttonText = "minus"
+        } else {
+            self.hideInput = true
+            buttonText = "plus"
+        }
+    }
+    
+    func inputFieldButtonPressed() {
+        buttonText = "plus"
+    }
 }
 
 struct TextfieldView: View {
@@ -34,6 +49,7 @@ struct TextfieldView: View {
                     todoItem = ""
                     isFocused = false
                     hideInput.hideInput = true
+                    hideInput.inputFieldButtonPressed()
                 }
                 
             }, label: {
