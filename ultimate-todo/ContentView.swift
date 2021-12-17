@@ -21,6 +21,7 @@ struct ContentView: View {
                 
                 if(!hideInput.hideInput) {
                 TextfieldView()
+                        .padding()
                         .environmentObject(todoItems)
                         .environmentObject(hideInput)
                         

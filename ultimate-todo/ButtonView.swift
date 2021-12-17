@@ -11,20 +11,30 @@ import SwiftUI
 
 struct ButtonView: View {
     @EnvironmentObject private var hideInput: TextFieldModal
+    @State private var buttonText = "plus"
     var body: some View {
         Button(action: {
             
-            hideInput.hideInput = false
+            if(hideInput.hideInput) {
+                hideInput.hideInput = false
+                buttonText = "minus"
+            } else {
+                hideInput.hideInput = true
+                buttonText = "plus"
+            }
+            
         }, label: {
-            Text("+")
+            Text("\(Image(systemName: buttonText))")
+            
                 .padding()
-                .font(.system(.largeTitle))
+                .font(.system(.title))
                         .frame(width: 77, height: 70)
                         .foregroundColor(.white)
                 
         })
             .background(.blue)
-            .cornerRadius(35)
+//            .cornerRadius(30)
+            .clipShape(Capsule())
             .padding()
     }
         
