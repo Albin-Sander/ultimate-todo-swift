@@ -12,15 +12,17 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var todoItems = ListModal()
     @StateObject var hideInput = TextFieldModal()
+    @State private var tapCount = UserDefaults.standard.string(forKey: "Tap")
+    @AppStorage("todos") var todos:[String] = []
     
     var body: some View {
         NavigationView {
             VStack {
-                ListView()
+                ListView(todos: $todos)
                     .environmentObject(todoItems)
                 
                 if(!hideInput.hideInput) {
-                TextfieldView()
+                    TextfieldView(todo: $todos)
                         .padding()
                         .environmentObject(todoItems)
                         .environmentObject(hideInput)
@@ -37,9 +39,12 @@ struct ContentView: View {
                 }
                 
                 
+               
+                
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("Ultimate Todo")
+            .navigationBarTitle(Text("Ultimate todo app").font(.system(size: 100.0)))
+            
             
             
             

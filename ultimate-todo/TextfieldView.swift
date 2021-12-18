@@ -27,10 +27,11 @@ class TextFieldModal: ObservableObject {
 }
 
 struct TextfieldView: View {
-    @State private var todoItem = ""
+    @AppStorage("todoItem") private var todoItem = ""
     @EnvironmentObject private var todoList: ListModal
     @EnvironmentObject private var hideInput: TextFieldModal
     @FocusState private var isFocused: Bool
+    @Binding var todo: [String]
     
     var body: some View {
         HStack {
@@ -45,10 +46,11 @@ struct TextfieldView: View {
             
             Button(action: {
                 if(!todoItem.isEmpty) {
-                    todoList.todos.append(todoItem)
+                    todo.append(todoItem)
                     todoItem = ""
                     isFocused = false
                     hideInput.hideInput = true
+                    
                     hideInput.inputFieldButtonPressed()
                 }
                 
@@ -60,8 +62,8 @@ struct TextfieldView: View {
     }
 }
 
-struct TextfieldView_Previews: PreviewProvider {
-    static var previews: some View {
-        TextfieldView()
-    }
-}
+//struct TextfieldView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TextfieldView()
+//    }
+//}
