@@ -33,14 +33,25 @@ struct TextfieldView: View {
     @FocusState private var isFocused: Bool
     @Binding var todo: [String]
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         HStack {
             TextField("Enter todo", text: $todoItem)
-                .padding(.all, 10)
-                .background(Color.white)
-                .foregroundColor(Color.black)
-                .cornerRadius(25)
                 
+                .padding(.all, 10)
+                
+                .background(colorScheme == .light ? Color(uiColor: .secondarySystemBackground) : Color.white)
+          
+                .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .stroke(colorScheme == .light ? Color.gray : Color(uiColor: .systemBackground), lineWidth: 4)
+                    )
+            
+                
+//                 .cornerRadius(25)
+                
+                .foregroundColor(colorScheme == .light ? Color.white : Color.black)
                 
                 .focused($isFocused)
             
@@ -56,6 +67,7 @@ struct TextfieldView: View {
                 
             }, label: {
                 Text("Add")
+                
             })
                 .padding(.leading, 10)
         }

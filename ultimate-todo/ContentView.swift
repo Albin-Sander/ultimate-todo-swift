@@ -15,6 +15,8 @@ struct ContentView: View {
     @State private var tapCount = UserDefaults.standard.string(forKey: "Tap")
     @AppStorage("todos") var todos:[String] = []
     
+    
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -27,7 +29,10 @@ struct ContentView: View {
                         .environmentObject(todoItems)
                         .environmentObject(hideInput)
                         
+                        
                 }
+                
+                
                     
                     
                 
